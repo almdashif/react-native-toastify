@@ -143,6 +143,14 @@ const styles = StyleSheet.create({
 
 ---
 
+
+### TypeScript Support
+This library is `TypeScript` friendly. Below are the available types:
+
+`ToastOptions`: Configuration for toast messages.
+`ToastContextType`: Type definition for the toast context.
+
+---
 ### Gestures
 
 The toast supports gestures for dismissal. Tap on the toast to dismiss.

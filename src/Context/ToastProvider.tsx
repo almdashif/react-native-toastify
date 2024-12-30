@@ -1,13 +1,13 @@
 import React, { createContext, useRef, useContext, ReactNode } from "react";
 import Toast from "../Components/Toast";
 
-interface ToastOptions {
+export interface ToastOptions {
     message: string;
     duration?: number;
     position?: "top" | "bottom" | "center";
 }
 
-interface ToastContextType {
+export interface ToastContextType {
     showToast: (options: ToastOptions) => void;
 }
 
