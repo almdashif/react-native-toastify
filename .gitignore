@@ -1,0 +1,13 @@
+# OSX
+#
+.DS_Store
+
+# node.js
+#
+npm-debug.log
+coverage
+
+.vscode
+dist
+node_modules
+react-native-toastify*.tgz

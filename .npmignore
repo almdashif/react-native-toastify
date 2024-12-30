@@ -1,0 +1,10 @@
+*/coverage
+rollup.config.js
+.vscode
+react-native-toastify*.tgz
+src/
+*.log
+*.ts
+*.tsx
+rollup.config.js
+tsconfig.json

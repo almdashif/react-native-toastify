@@ -1,0 +1,45 @@
+{
+  "name": "react-native-toastify",
+  "version": "0.0.1",
+  "description": "React Native Toastify",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/almdashif/react-native-toastify"
+  },
+  "keywords": [
+    "react-native-toastify",
+   "react-native-toaster",
+   "react-native-toast",
+    "android",
+    "ios",
+    "react-native",
+    "react-native-cli"
+  ],
+  "author": "Mohammed Ashif AL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/almdashif/react-native-toastify/issues"
+  },
+  "homepage": "https://github.com/almdashif/react-native-toastify/blob/main/README.md",
+  "devDependencies": {
+    "@react-native/typescript-config": "^0.76.3",
+    "@types/jest": "^29.5.14",
+    "@types/react": "^18.3.12",
+    "@types/react-native": "^0.73.0",
+    "rollup": "^2.79.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.7.2"
+  }
+}
