@@ -158,13 +158,13 @@ const styles: { [key: string]: any } = StyleSheet.create({
     textAlign: 'center',
   },
   info: {
-    backgroundColor: "#003278",
+    backgroundColor: "blue",
   },
   success: {
-    backgroundColor: "#79ca7d",
+    backgroundColor: "green",
   },
   error: {
-    backgroundColor: "#dd3131",
+    backgroundColor: "red",
   },
 });
 
