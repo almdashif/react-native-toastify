@@ -45,43 +45,12 @@ To use the `Toast` component globally, wrap your app with the `ToastProvider` an
 
 ---
 
-### 1. Create `ToastProvider.js`
-
-Create a file named `ToastProvider.js` and include the following code:
-
-```javascript
-import React, { createContext, useRef, useContext } from 'react';
-import Toast from 'react-native-toastify-pro';
-
-
-const ToastContext = createContext();
-
-export const ToastProvider = ({ children }) => {
-    const toastRef = useRef();
-
-    const showToast = (options) => {
-        toastRef.current?.show(options);
-    };
-
-    return (
-        <ToastContext.Provider value={{ showToast }}>
-            {children}
-            <Toast ref={toastRef} />
-        </ToastContext.Provider>
-    );
-};
-
-export const useToast = () => {
-    return useContext(ToastContext);
-};
-```
-
-### 2. Modify App.js
+### 1. Modify App.js
 Wrap your app's main component (e.g., navigation or root-level component) with the ToastProvider:
 
 ```js
 import React from 'react';
-import { ToastProvider } from './your path/ToastProvider';
+import { ToastProvider } from "react-native-toastify-pro";
 
 export default function App() {
     return (
@@ -93,13 +62,13 @@ export default function App() {
 
 ```
 
-### 3. Using useToast
+### 2. Using useToast
 To show toasts, use the useToast hook in any component. Here's an example:
 
 ```js
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { useToast } from 'your ToastProvider.js path';
+import { useToast } from "''"react-native-toastify-pro";
 
 const ExampleModule = () => {
     const { showToast } = useToast();

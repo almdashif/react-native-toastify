@@ -1,4 +1,5 @@
 import Toast, { positionType } from "./Components/Toast";
+import { ToastProvider, useToast } from "./Context/ToastProvider";
 
 export default Toast;
-export { positionType };
+export { positionType, ToastProvider, useToast };
