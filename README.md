@@ -68,7 +68,7 @@ To show toasts, use the useToast hook in any component. Here's an example:
 ```js
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { useToast } from "''"react-native-toastify-pro";
+import { useToast } from "react-native-toastify-pro";
 
 const ExampleModule = () => {
     const { showToast } = useToast();
