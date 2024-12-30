@@ -17,26 +17,71 @@ export enum positionType {
 }
 
 const Toast = React.forwardRef((_, ref) => {
-  const [toastConfig, setToastConfig] = useState<{ message: string; type: string; position: positionType }>({ message: '', type: '', position: 'top' as positionType });
+  const [toastConfig, setToastConfig] = useState<{
+    message: string;
+    type: string;
+    position: positionType;
+    backgroundColor: string;
+    textColor: string;
+    duration: number;
+  }>({
+    message: '',
+    type: '',
+    position: 'top' as positionType,
+    backgroundColor: 'blue',  // default background color
+    textColor: 'white', // default text color
+    duration: 3000,
+  });
   const [visible, setVisible] = useState(false);
 
   const translateY = useRef(new Animated.Value(0)).current;
   const opacity = useRef(new Animated.Value(0)).current;
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  React.useImperativeHandle(ref, () => ({
-    show: ({ message = '', type = 'info', position = 'top' as positionType, duration = 3000 }) => {
+  // Helper function to get default colors based on toast type
+  const getDefaultColor = (type: string) => {
+    switch (type) {
+      case 'success':
+        return { backgroundColor: 'green', textColor: 'white' };
+      case 'error':
+        return { backgroundColor: 'red', textColor: 'white' };
+      case 'info':
+        return { backgroundColor: 'blue', textColor: 'white' };
+      default:
+        return { backgroundColor: 'gray', textColor: 'white' };
+    }
+  };
 
+  React.useImperativeHandle(ref, () => ({
+    show: ({
+      message = '',
+      type = 'info',
+      position = 'top' as positionType,
+      duration = 3000,
+      backgroundColor = '',  // custom background color (optional)
+      textColor = '',  // custom text color (optional)
+    }) => {
       if (timeoutRef.current) {
-        if (timeoutRef.current !== null) {
-          clearTimeout(timeoutRef.current);
-        }
+        clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
       }
 
-      setToastConfig({ message, type, position });
-      setVisible(true);
+      // Use provided backgroundColor and textColor, or fallback to defaults based on type
+      const { backgroundColor: finalBackgroundColor, textColor: finalTextColor } =
+        backgroundColor || textColor
+          ? { backgroundColor: backgroundColor || getDefaultColor(type).backgroundColor, 
+              textColor: textColor || getDefaultColor(type).textColor }
+          : getDefaultColor(type);
 
+      setToastConfig({
+        message,
+        type,
+        position,
+        backgroundColor: finalBackgroundColor,
+        textColor: finalTextColor,
+        duration,
+      });
+      setVisible(true);
 
       translateY.setValue(position === 'top' ? -100 : height);
       Animated.parallel([
@@ -51,14 +96,12 @@ const Toast = React.forwardRef((_, ref) => {
         }),
       ]).start();
 
-
       timeoutRef.current = setTimeout(() => hide(position), duration);
     },
     hide: () => hide(toastConfig.position),
   }));
 
   const hide = (position: positionType) => {
-
     Animated.parallel([
       Animated.timing(opacity, {
         toValue: 0,
@@ -78,7 +121,6 @@ const Toast = React.forwardRef((_, ref) => {
       timeoutRef.current = null;
     });
   };
-
 
   const panResponder = useRef(
     PanResponder.create({
@@ -113,14 +155,16 @@ const Toast = React.forwardRef((_, ref) => {
           {...panResponder.panHandlers}
           style={[
             styles.toast,
-            styles[toastConfig.type],
+            { backgroundColor: toastConfig.backgroundColor },
             {
               opacity,
               transform: [{ translateY }],
             },
           ]}
         >
-          <Text style={styles.message}>{toastConfig.message}</Text>
+          <Text style={[styles.message, { color: toastConfig.textColor }]}>
+            {toastConfig.message}
+          </Text>
         </Animated.View>
       </View>
     </TouchableWithoutFeedback>
@@ -133,7 +177,7 @@ const styles: { [key: string]: any } = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems: 'center',
-    zIndex: 999999999999999999
+    zIndex: 999999999999999999,
   },
   top: {
     top: 50,
@@ -154,17 +198,7 @@ const styles: { [key: string]: any } = StyleSheet.create({
     elevation: 5,
   },
   message: {
-    color: '#fff',
     textAlign: 'center',
-  },
-  info: {
-    backgroundColor: "blue",
-  },
-  success: {
-    backgroundColor: "green",
-  },
-  error: {
-    backgroundColor: "red",
   },
 });
 
