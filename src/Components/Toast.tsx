@@ -72,7 +72,9 @@ const Toast = React.forwardRef((_, ref) => {
       }),
     ]).start(() => {
       setVisible(false);
-      clearTimeout(timeoutRef.current);
+      if (timeoutRef.current !== null) {
+        clearTimeout(timeoutRef.current);
+      }
       timeoutRef.current = null;
     });
   };

@@ -1,4 +1,4 @@
-### React Native Toastify  ![npm](https://img.shields.io/npm/v/react-native-toastify) ![LICENSE MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)
+### React Native Toastify  ![npm](https://img.shields.io/npm/v/react-native-toastify-pro) ![LICENSE MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 
 A customizable toast notification component for React Native, designed to work seamlessly on both Android and iOS platforms and  allows you to add notifications to your react-native app (ios, android) with ease. No more nonsense! :fire: 🎉 
 
@@ -13,14 +13,14 @@ A customizable toast notification component for React Native, designed to work s
 ### Installation
 
 ```bash
-npm install react-native-toastify
+npm install react-native-toastify-pro
 cd ios && pod install
 cd android && ./gradlew clean
 ```
 or
 
 ```bash
-yarn add react-native-toastify
+yarn add react-native-toastify-pro
 cd ios && pod install
 cd android && ./gradlew clean
 ```
@@ -51,7 +51,7 @@ Create a file named `ToastProvider.js` and include the following code:
 
 ```javascript
 import React, { createContext, useRef, useContext } from 'react';
-import Toast from 'react-native-toastify';
+import Toast from 'react-native-toastify-pro';
 
 
 const ToastContext = createContext();
@@ -81,7 +81,7 @@ Wrap your app's main component (e.g., navigation or root-level component) with t
 
 ```js
 import React from 'react';
-import { ToastProvider } from './Context/ToastProvider';
+import { ToastProvider } from './your path/ToastProvider';
 
 export default function App() {
     return (
@@ -205,5 +205,5 @@ Thank you for your interest in contributing!
 [almdashif](https://github.com/almdashif)
 
 ## License
-[MIT Licensed](https://github.com/almdashif/react-native-toastify/blob/main/LICENSE) react-native-toastify is under BSD license. © Mohammed Ashif  2024 - present
+[MIT Licensed](https://github.com/almdashif/react-native-toastify-pro/blob/main/LICENSE) react-native-toastify-pro is under BSD license. © Mohammed Ashif  2024 - present
 

@@ -1,7 +1,7 @@
 {
-  "name": "react-native-toastify",
-  "version": "0.0.1",
-  "description": "React Native Toastify",
+  "name": "react-native-toastify-pro",
+  "version": "0.0.2",
+  "description": "React Native Toastify Pro",
   "files": [
     "dist",
     "README.md"
@@ -15,9 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/almdashif/react-native-toastify"
+    "url": "git+https://github.com/almdashif/react-native-toastify-pro"
   },
   "keywords": [
+    "react-native-toastify-pro",
     "react-native-toastify",
    "react-native-toaster",
    "react-native-toast",
@@ -29,9 +30,9 @@
   "author": "Mohammed Ashif AL",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/almdashif/react-native-toastify/issues"
+    "url": "https://github.com/almdashif/react-native-toastify-pro/issues"
   },
-  "homepage": "https://github.com/almdashif/react-native-toastify/blob/main/README.md",
+  "homepage": "https://github.com/almdashif/react-native-toastify-pro/blob/main/README.md",
   "devDependencies": {
     "@react-native/typescript-config": "^0.76.3",
     "@types/jest": "^29.5.14",
