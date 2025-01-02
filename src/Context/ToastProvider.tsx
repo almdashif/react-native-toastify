@@ -5,6 +5,9 @@ export interface ToastOptions {
     message: string;
     duration?: number;
     position?: "top" | "bottom" | "center";
+    type?: "info" | "success" | "error";
+    backgroundColor?: string;
+    textColor?: string;
 }
 
 export interface ToastContextType {
