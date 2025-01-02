@@ -2,7 +2,9 @@
 
 A customizable toast notification component for React Native, designed to work seamlessly on both Android and iOS platforms and  allows you to add notifications to your react-native app (ios, android) with ease. No more nonsense! :fire: 🎉 
 
-![Loading Animation](src/Images/toast.gif)
+![toast](https://github.com/user-attachments/assets/415d0d61-473a-40ce-816d-9a22fedaec9e)
+
+
 
 
 
@@ -143,15 +145,14 @@ const styles = StyleSheet.create({
 
 ---
 
+
 ### TypeScript Support
-This library is TypeScript-friendly. Below are the available types:
+This library is `TypeScript` friendly. Below are the available types:
 
 `ToastOptions`: Configuration for toast messages.
-
 `ToastContextType`: Type definition for the toast context.
 
 ---
-
 ### Gestures
 
 The toast supports gestures for dismissal. Tap on the toast to dismiss.
