@@ -97,7 +97,8 @@ const ExampleModule = () => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => {
-        showToast({ message: 'custom toast', type: 'info', position: 'top', duration: 5000, backgroundColor: 'black', textColor: 'white', positionValue: 100 });
+        showToast({ message: 'custom toast', type: 'info', position: 'top', duration: 5000,
+         backgroundColor: 'black', textColor: 'white',  positionOffset:100  });
       }} style={[styles.btnWrapper, { backgroundColor: 'black' }]}>
         <Text style={styles.textStyle}>CUSTOM</Text>
       </TouchableOpacity>
@@ -133,6 +134,8 @@ const styles = StyleSheet.create({
 | `backgroundColor`| `string`          | Depends on type or you can specify a custom `background color`| Background color of the toast.                    |
 | `textColor`      | `string`          | `'#fff'`      | Text color of the toast message.                   |
 | `duration`       | `number`          | `3000`        | How long the toast remains visible (in ms).         |
+| `positionOffset`       | `number`          | `50`        | Offset position for top or bottom. Specifies the distance in pixels from the edge of the screen where the toast will appear.        |
+
 
 ---
 

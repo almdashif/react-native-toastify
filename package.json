@@ -1,6 +1,6 @@
 {
   "name": "react-native-toastify-pro",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A customizable toast notification component for React Native, designed to work seamlessly on both Android and iOS platforms and  allows you to add notifications to your react-native app (ios, android) with ease. No more nonsense!",
   "files": [
     "dist",
