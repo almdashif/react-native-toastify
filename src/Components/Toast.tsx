@@ -20,16 +20,18 @@ const Toast = React.forwardRef((_, ref) => {
   const [toastConfig, setToastConfig] = useState<{
     message: string;
     type: string;
-    position: positionType;
+    position: keyof typeof positionType;
+    positionOffset: number; // Dynamic offset
     backgroundColor: string;
     textColor: string;
     duration: number;
   }>({
     message: '',
     type: '',
-    position: 'top' as positionType,
-    backgroundColor: 'blue',  // default background color
-    textColor: 'white', // default text color
+    position: 'top',
+    positionOffset: 50, // Default offset
+    backgroundColor: 'blue',
+    textColor: 'white',
     duration: 3000,
   });
   const [visible, setVisible] = useState(false);
@@ -56,10 +58,19 @@ const Toast = React.forwardRef((_, ref) => {
     show: ({
       message = '',
       type = 'info',
-      position = 'top' as positionType,
+      position = 'top',
+      positionOffset = 50, // Custom offset or default to 50
       duration = 3000,
-      backgroundColor = '',  // custom background color (optional)
-      textColor = '',  // custom text color (optional)
+      backgroundColor = '',
+      textColor = '',
+    }: {
+      message?: string;
+      type?: string;
+      position?: keyof typeof positionType;
+      positionOffset?: number;
+      duration?: number;
+      backgroundColor?: string;
+      textColor?: string;
     }) => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -69,14 +80,17 @@ const Toast = React.forwardRef((_, ref) => {
       // Use provided backgroundColor and textColor, or fallback to defaults based on type
       const { backgroundColor: finalBackgroundColor, textColor: finalTextColor } =
         backgroundColor || textColor
-          ? { backgroundColor: backgroundColor || getDefaultColor(type).backgroundColor, 
-              textColor: textColor || getDefaultColor(type).textColor }
+          ? {
+            backgroundColor: backgroundColor || getDefaultColor(type).backgroundColor,
+            textColor: textColor || getDefaultColor(type).textColor,
+          }
           : getDefaultColor(type);
 
       setToastConfig({
         message,
         type,
         position,
+        positionOffset,
         backgroundColor: finalBackgroundColor,
         textColor: finalTextColor,
         duration,
@@ -101,7 +115,7 @@ const Toast = React.forwardRef((_, ref) => {
     hide: () => hide(toastConfig.position),
   }));
 
-  const hide = (position: positionType) => {
+  const hide = (position: keyof typeof positionType) => {
     Animated.parallel([
       Animated.timing(opacity, {
         toValue: 0,
@@ -150,7 +164,8 @@ const Toast = React.forwardRef((_, ref) => {
 
   return (
     <TouchableWithoutFeedback onPress={() => hide(toastConfig.position)} style={{ zIndex: 999999999999999999 }}>
-      <View style={[styles.container, toastConfig.position === 'bottom' ? styles.bottom : styles.top]}>
+      <View style={[styles.container, toastConfig.position === 'bottom' ? { bottom: toastConfig.positionOffset }
+        : { top: toastConfig.positionOffset },]}>
         <Animated.View
           {...panResponder.panHandlers}
           style={[
@@ -171,19 +186,13 @@ const Toast = React.forwardRef((_, ref) => {
   );
 });
 
-const styles: { [key: string]: any } = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     left: 0,
     right: 0,
     alignItems: 'center',
-    zIndex: 999999999999999999,
-  },
-  top: {
-    top: 50,
-  },
-  bottom: {
-    bottom: 50,
+    zIndex: 9999,
   },
   toast: {
     minWidth: 200,
