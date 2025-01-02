@@ -8,6 +8,7 @@ export interface ToastOptions {
     type?: "info" | "success" | "error";
     backgroundColor?: string;
     textColor?: string;
+    positionOffset: number; 
 }
 
 export interface ToastContextType {
